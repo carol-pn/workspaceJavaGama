@@ -5,30 +5,37 @@ public class Funcionario {
 	private String email;
 	private double salario;
 	
+	public Funcionario(int numeroFuncional, String nome, String email, double salario) {
+		this.numeroFuncional = numeroFuncional;
+		this.nome = nome;
+		this.email = email;
+		this.salario = salario;
+		
+	}
+	
 	
 	void reajustarSalario(double percentual){
 		salario = salario + salario*percentual/100;
 	}
 	
 	String exibirInfo() {
-		return "Funcionário: "+nome+" ("+numeroFuncional+")"+" - "+email+" - R$"+salario;
+		return numeroFuncional+" "+nome+" ("+email+")"+" - R$"+salario;
 	}
 	
 	double calcularImposto() {
-		double imposto = 0;
+		
 		if (salario<=2000) {
-			imposto = 0;
+			return 0;
 		}
 		else if(salario>2000 && salario<=3000) {
-			imposto = salario*15/100;
+			return salario*15/100;
 		}
 		else if(salario>3000 && salario<=4500) {
-			imposto = salario*25/100;
+			return salario*25/100;
 		}
-		else if(salario>4500) {
-			imposto = 2250;
+		else {
+			return 2250;
 		}
-		return imposto;
 	}
 
 	public int getNumeroFuncional() {
